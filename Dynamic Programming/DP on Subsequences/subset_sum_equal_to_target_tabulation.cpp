@@ -1,7 +1,7 @@
 // https://www.naukri.com/code360/problems/subset-sum-equal-to-k_1550954
 
 /*
-
+OPTIMAL SOLUTION
  */
 
 #include<bits/stdc++.h>

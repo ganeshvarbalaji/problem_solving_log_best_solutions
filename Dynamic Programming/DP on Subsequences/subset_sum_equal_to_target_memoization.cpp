@@ -24,7 +24,6 @@ using namespace std;
 #define mod 1000000007
 
 
-
 bool solve(int i, vi& arr, int target, vvi& dp){
     if(target == 0) return true;
     if (i == arr.size()) {

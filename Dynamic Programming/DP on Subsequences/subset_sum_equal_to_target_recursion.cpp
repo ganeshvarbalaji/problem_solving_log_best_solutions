@@ -23,9 +23,6 @@ using namespace std;
 #define vll vector<long long>
 #define mod 1000000007
 
-
-
-
 bool solve(int i, vi& arr, int target){
     if(target == 0) return true;
     if(target < 0) return false;
@@ -35,13 +32,10 @@ bool solve(int i, vi& arr, int target){
         bool a = solve(i+1, arr, target-arr[i]);
         if(a) return true;
     }
-
     return false;
 }
 
 
 bool subsetSumToK(int n, int k, vi &arr) {
-
     return solve(0, arr, k);
-
 }
