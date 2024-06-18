@@ -48,5 +48,6 @@ public:
         for(int i : nums) sum +=  i;
         if(sum%2 == 1) return false;
         if(subsetSumToK(nums.size(), sum/2, nums)) return true;
+        return false;
     }
 };
