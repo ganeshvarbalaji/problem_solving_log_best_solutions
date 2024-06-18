@@ -1,3 +1,5 @@
+// https://leetcode.com/problems/partition-equal-subset-sum/description/
+
 #include<bits/stdc++.h>
 using namespace std;
 
@@ -19,28 +21,26 @@ using namespace std;
 
 class Solution {
 public:
-    bool solve(int i, vi& arr, int target, vvi& dp){
-        if(target == 0) return true;
-        if (i == arr.size()) {
-        return false;
-        }
-
-        for (; i < arr.size(); i++) {
-            if (target - arr[i] < 0)
-                continue;
-            else if (dp[i + 1][target - arr[i]] == -1) {
-                dp[i + 1][target - arr[i]] = solve(i + 1, arr, target - arr[i], dp);
-                if(dp[i+1][target - arr[i]] == 1) return true;
+    bool subsetSumToK(int n, int k, vector<int> &arr) {
+        vvi grid(n+1, vi (k+1, -1));
+        if(arr[n-1] <= k)
+        grid[n-1][arr[n-1]] = 1;
+        grid[n-1][0] = 1;
+        for(int i = n-2; i >= 0; i--){
+            grid[i][0] = true;
+            if(arr[i] <= k)
+                grid[i][arr[i]] = true; 
+            for(int j = 0; j < grid[i+1].size(); j++){
+                if(grid[i+1][j] == 1){
+                    if(arr[i] + j <= k)
+                        grid[i][j + arr[i]] = true; 
+                    grid[i][j] = true;
+                }
             }
-            else if (dp[i+1][target-arr[i]] == 1) return true;
         }
 
-        return false;
-    }
-
-    bool subsetSumToK(int n, int k, vi &arr) {
-        vvi dp(arr.size()+1, vi (k+1, -1));
-        return solve(0, arr, k, dp);
+        if(grid[0][k] == 1) return true;
+        else return false;
     }
 
     bool canPartition(vi& nums) {
