@@ -1,5 +1,9 @@
-// https://www.naukri.com/code360/problems/number-of-subsets_3952532
-// https://www.geeksforgeeks.org/problems/perfect-sum-problem5633/1
+// https://www.naukri.com/code360/problems/partitions-with-given-difference_3751628
+
+/*
+sum - s2 - s2 = d
+s2 = (sum-d)/2
+ */
 
 #include<bits/stdc++.h>
 using namespace std;
@@ -38,4 +42,13 @@ int findWays(vi& arr, int k){
     }
 
     return dp[0][k]%mod;
+}
+
+
+int countPartitions(int n, int d, vector<int> &arr) {
+    int sum = 0;
+    for(int i : arr) sum += i;
+    if(sum-d < 0) return 0;
+    if((sum-d)%2 == 1) return 0;
+    return findWays(arr, (sum-d)/2);
 }
