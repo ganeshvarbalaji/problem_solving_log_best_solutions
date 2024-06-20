@@ -21,24 +21,37 @@ using namespace std;
 
 class Solution {
 public:
+    /* OLD CODE */
+    // int knapSack(int W, int wt[], int val[], int n) { 
+    //     vvi grid(n, vi (W+1, 0));
+    //     if(wt[n-1] <= W) grid[n-1][wt[n-1]] = val[n-1];
+
+    //     for(int i = n-2; i >= 0; i--){
+    //         grid[i] = grid[i+1];
+    //         if(wt[i] <= W){
+    //             if(grid[i][wt[i]] < val[i])
+    //                 grid[i][wt[i]] = val[i];
+    //         }
+    //         else continue;
+
+    //         for(int j = 0; wt[i] + j <= W; j++){
+    //             if(grid[i+1][j] > 0)
+    //                 grid[i][wt[i] + j] = max(val[i] + grid[i+1][j], grid[i][wt[i] + j]);
+    //         }
+    //     }
+
+    //     return *max_element(grid[0].begin(), grid[0].end());
+    // }
+
+
+    /* NEW CODE - WORLD STANDARD*/
     int knapSack(int W, int wt[], int val[], int n) { 
-        vvi grid(n, vi (W+1, 0));
-        if(wt[n-1] <= W) grid[n-1][wt[n-1]] = val[n-1];
-
-        for(int i = n-2; i >= 0; i--){
-            grid[i] = grid[i+1];
-            if(wt[i] <= W){
-                if(grid[i][wt[i]] < val[i])
-                    grid[i][wt[i]] = val[i];
-            }
-            else continue;
-
-            for(int j = 0; wt[i] + j <= W; j++){
-                if(grid[i+1][j] > 0)
-                    grid[i][wt[i] + j] = max(val[i] + grid[i+1][j], grid[i][wt[i] + j]);
-            }
+        vi f(W+1, 0) ;
+        for(int i = 0; i < n; i++){
+            for(int j = W; j >= wt[i]; j--)
+                f[j] = max(f[j], val[i] + f[j - wt[i]]);
         }
-
-        return *max_element(grid[0].begin(), grid[0].end());
+        return *max_element(f.begin(), f.end());
     }
+    
 };
