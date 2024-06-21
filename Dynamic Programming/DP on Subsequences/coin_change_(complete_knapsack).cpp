@@ -12,6 +12,34 @@ using namespace std;
 
 class Solution {
 public:
+
+    /* OLD CODE */
+    // int coinChange(vi& coins, int amount) {
+    //     if(amount == 0) return 0;
+    //     int n = coins.size();
+    //     vi prev(amount+1, INT_MAX);
+    //     for(int j = 1; j * coins[n-1] <= amount; j++){
+    //         prev[j*coins[n-1]] = j;
+    //     }
+
+    //     for(int i = n-2; i >= 0; i--){
+    //         int coin = coins[i];
+    //         for(int j = 1; j*coin <= amount; j++){
+    //             prev[j*coin] = min(j, prev[j*coin]);
+
+    //             for(int k = 1; k + j*coin <= amount; k++){
+    //                 if(prev[k] != INT_MAX)
+    //                 prev[j*coin + k] = min(prev[k] + j, prev[j*coin + k]);
+    //             }
+    //         }
+    //     }
+
+    //     if(prev[amount] == INT_MAX){
+    //         return -1;
+    //     }
+    //     else return prev[amount];
+    // }
+
     int coinChange(vi& coins, int amount) {
         int n = coins.size();
         vi f(amount+1, amount+1);
