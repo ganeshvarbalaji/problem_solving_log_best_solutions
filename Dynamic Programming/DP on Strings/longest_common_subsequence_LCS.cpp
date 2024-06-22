@@ -3,22 +3,6 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-#define vi vector<int>
-#define vvi vector<vector<int>>
-#define ii pair<int,int>
-#define vii vector<pair<int,int>>
-#define vvii vector<vector<pair<int,int>>>
-#define vc vector<char>
-#define vvc vector<vector<char>>
-#define vs vector<string>
-#define vvs vector<vector<string>>
-#define vb vector<bool>
-#define vvb vector<vector<bool>>
-#define pb push_back
-#define ll long long
-#define vll vector<long long>
-#define mod 1000000007
-
 #define vvi vector<vector<int>>
 #define vi vector<int>
 
